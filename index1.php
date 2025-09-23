@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C. Store - Pasillos de Tienda de Conveniencia</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -167,7 +167,7 @@
 </head>
 <body>
     <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-store me-2"></i>C Store
@@ -178,7 +178,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Inicio</a>
+                        <a class="nav-link active" href="index1.php">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="app/pages/productos.php">Productos</a>
@@ -187,7 +187,7 @@
                         <a class="nav-link" href="#">Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="app/pages/productos.php">Perfil</a>
+                        <a class="nav-link" href="app/pages/perfil.php">Perfil</a>
                     </li>
                 </ul>
             </div>
