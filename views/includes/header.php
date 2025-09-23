@@ -28,7 +28,7 @@
                         <a class="nav-link" href="app/pages/login/PedidosPrevios.php">Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="app/pages/perfil.php">Perfil</a>
+                        <a class="nav-link" href="app/pages/login/perfil.php">Perfil</a>
                     </li>
                 </ul>
             </div>
