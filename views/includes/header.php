@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg navbar-dark h-100 ">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-store me-2"></i>C Store
