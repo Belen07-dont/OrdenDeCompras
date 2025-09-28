@@ -15,7 +15,7 @@
 <body>
     <!-- Navegación -->
     @include('includes.navbar');
-<label for="">yay im a label</label>
+    <label for="">yay im a label again </label>
     <!-- Sección Hero -->
     <div class="hero-section">
         <div class="container text-center">
