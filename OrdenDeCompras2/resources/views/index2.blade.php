@@ -5,61 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C. Store - Pasillos de Tienda de Conveniencia</title>
     <!-- Bootstrap CSS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Alternative: Use Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
 </head>
 <body>
-  
-   <!-- Authentication Status Banner -->
-<div class="auth-status-banner">
-    @auth
-        <div class="auth-success">
-            <i class="fas fa-check-circle me-2"></i>
-            ¡Bienvenido de vuelta, {{ auth()->user()->name }}!
-        </div>
-    @else
-        <div class="auth-warning">
-            <i class="fas fa-exclamation-circle me-2"></i>
-            No has iniciado sesión. <a href="{{ url('/login') }}" class="auth-link">Inicia sesión aquí</a>
-        </div>
-    @endauth
-</div>
-
-<!-- Your existing navbar -->
     <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <i class="fas fa-store me-2"></i>C Store
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('/') }}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/productos') }}">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/pedidos') }}">Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/carrito') }}">Carrito</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/perfil') }}">Perfil</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    @include('includes.navbar');
 
+    
     <!-- Sección Hero -->
     <div class="hero-section">
         <div class="container text-center">
@@ -69,6 +26,13 @@
         </div>
     </div>
 
+    <form action="/register" method="POST">
+        @csrf
+        <input type="text"      placeholder="name"      name="name">
+        <input type="text"      placeholder="email"     name="email">
+        <input type="password"  placeholder="password"  name="password">
+        <button>Registrar</button>
+    </form>
     <!-- Información de la Tienda -->
     <div class="container">
         <div class="row">
@@ -107,9 +71,9 @@
                 <div class="col-md-4">
                     <div class="aisle-card card">
                         <span class="category-badge">Snacks</span>
-                        <img src="{{ asset('img/snacks.jpg') }}" class="card-img-top" alt="Pasillo de Snacks">
+                        <img src="img/snacks.jpg" class="card-img-top" alt="Pasillo de Snacks">
                         <div class="card-body">
-                            <h5 class="card-title">Snacks</h5>
+                            <h5 class="card-title">Snacks y Papas Fritas</h5>
                             <p class="card-text">Encuentra todos tus snacks favoritos, papas fritas y pretzels en este pasillo. Perfectos para fiestas o para picar.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="#" class="btn btn-primary">Explorar</a>
@@ -121,7 +85,7 @@
                 <div class="col-md-4">
                     <div class="aisle-card card">
                         <span class="category-badge">Bebidas</span>
-                        <img src="{{ asset('img/beverage.jpg') }}" class="card-img-top" alt="Pasillo de Bebidas">
+                        <img src="img/beverage.jpg" class="card-img-top" alt="Pasillo de Bebidas">
                         <div class="card-body">
                             <h5 class="card-title">Bebidas</h5>
                             <p class="card-text">Refréscate con nuestra amplia selección de refrescos, jugos, agua y bebidas energéticas. También tenemos sección fría.</p>
@@ -135,7 +99,7 @@
                 <div class="col-md-4">
                     <div class="aisle-card card">
                         <span class="category-badge">Congelados</span>
-                        <img src="{{ asset('img/frozen-foods.jpg') }}" class="card-img-top" alt="Alimentos Congelados">
+                        <img src="img/frozen-foods.jpg" class="card-img-top" alt="Alimentos Congelados">
                         <div class="card-body">
                             <h5 class="card-title">Alimentos Congelados</h5>
                             <p class="card-text">Desde helados hasta cenas congeladas, tenemos todo lo que necesitas para una comida rápida y fácil.</p>
@@ -152,7 +116,7 @@
                 <div class="col-md-4">
                     <div class="aisle-card card">
                         <span class="category-badge">Lácteos</span>
-                        <img src="{{ asset('img/lacteos.jpg') }}" class="card-img-top" alt="Productos Lácteos">
+                        <img src="img/lacteos.jpg" class="card-img-top" alt="Productos Lácteos">
                         <div class="card-body">
                             <h5 class="card-title">Lácteos y Huevos</h5>
                             <p class="card-text">Leche fresca, queso, yogur y huevos. Abastecemos de granjas locales para los productos más frescos.</p>
@@ -163,7 +127,7 @@
                 <div class="col-md-4">
                     <div class="aisle-card card">
                         <span class="category-badge">Panadería</span>
-                        <img src="{{ asset('img/bake.jpg') }}" class="card-img-top" alt="Productos de Panadería">
+                        <img src="img/bake.jpg" class="card-img-top" alt="Productos de Panadería">
                         <div class="card-body">
                             <h5 class="card-title">Panadería</h5>
                             <p class="card-text">Pan fresco, pasteles y postres entregados diariamente. ¡No te pierdas nuestras famosas galletas con chispas de chocolate!</p>
@@ -174,7 +138,7 @@
                 <div class="col-md-4">
                     <div class="aisle-card card">
                         <span class="category-badge">Hogar</span>
-                        <img src="{{ asset('img/essentials.jpg') }}" class="card-img-top" alt="Productos para el Hogar">
+                        <img src="img/essentials.jpg" class="card-img-top" alt="Productos para el Hogar">
                         <div class="card-body">
                             <h5 class="card-title">Productos para el Hogar</h5>
                             <p class="card-text">Desde productos de limpieza hasta artículos de tocador básicos, tenemos todos los esenciales que necesitas para tu hogar.</p>
@@ -212,7 +176,7 @@
                 <div class="col-md-4">
                     <div class="team-member">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Gerente de Tienda" class="team-img">
-                        <h4>Belen Ferrera</h4>
+                        <h4>María Rodríguez</h4>
                         <p class="text-muted">Gerente de Tienda</p>
                         <p>Con más de 10 años en gestión minorista, María asegura que nuestra tienda funcione sin problemas y que nuestros clientes siempre estén satisfechos.</p>
                     </div>
@@ -220,7 +184,7 @@
                 <div class="col-md-4">
                     <div class="team-member">
                         <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Subgerente" class="team-img">
-                        <h4>Dereck Leon</h4>
+                        <h4>James Wilson</h4>
                         <p class="text-muted">Subgerente</p>
                         <p>James se encarga del inventario y las relaciones con los proveedores, asegurándose de que siempre estemos surtidos con tus productos favoritos.</p>
                     </div>
@@ -228,7 +192,7 @@
                 <div class="col-md-4">
                     <div class="team-member">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Cajera Principal" class="team-img">
-                        <h4>Brenda Serrano</h4>
+                        <h4>Sarah Johnson</h4>
                         <p class="text-muted">Cajera Principal</p>
                         <p>Es probable que veas a Sarah en la caja con una sonrisa. Lleva 5 años con nosotros y conoce a todos nuestros clientes habituales por su nombre.</p>
                     </div>
@@ -283,44 +247,29 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Pie de Página -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>C. Store</h5>
-                    <p>Tu tienda de conveniencia de barrio para todas tus necesidades diarias. Productos de calidad, servicio amable y horarios convenientes.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Enlaces Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ url('/') }}" class="text-white">Inicio</a></li>
-                        <li><a href="#pasillos" class="text-white">Pasillos</a></li>
-                        <li><a href="#" class="text-white">Ofertas Semanales</a></li>
-                        <li><a href="#" class="text-white">Contáctanos</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Conéctate con Nosotros</h5>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="mt-3">
-                        <p class="mb-0">¡Suscríbete a nuestro boletín para recibir actualizaciones y ofertas especiales!</p>
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-4 bg-light">
-            <p class="text-center mb-0">© 2023 C. Store. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
+    @include('includes.footer');
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style>
         :root {
             --primary-color: #ff6b35;
@@ -329,11 +278,19 @@
             --dark-color: #2D3047;
             --light-color: #F8F9FA;
         }
-        
+        html{
+            height:100%
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
             color: #333;
+            height:100%;
+            padding:0;
+            margin: 0;
+        }
+        main{
+            flex:1;
         }
         
         .navbar {
@@ -476,62 +433,4 @@
             border-radius: 20px;
             font-size: 12px;
         }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-            .auth-status-banner {
-        width: 100%;
-        padding: 12px 0;
-        font-size: 14px;
-        font-weight: 600;
-        text-align: center;
-        position: relative;
-        z-index: 1030; /* Above navbar */
-    }
-
-    .auth-success {
-        background: linear-gradient(135deg, var(--secondary-color), #1ba89c);
-        color: white;
-        padding: 10px 20px;
-        box-shadow: 0 2px 10px rgba(46, 196, 182, 0.3);
-    }
-
-    .auth-warning {
-        background: linear-gradient(135deg, var(--accent-color), #e68a00);
-        color: white;
-        padding: 10px 20px;
-        box-shadow: 0 2px 10px rgba(255, 159, 28, 0.3);
-    }
-
-    .auth-link {
-        color: white;
-        text-decoration: underline;
-        font-weight: 700;
-        margin-left: 5px;
-        transition: color 0.3s;
-    }
-
-    .auth-link:hover {
-        color: var(--dark-color);
-    }
-
-    /* Optional: Add animation */
-    @keyframes slideDown {
-        from {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-
-    .auth-status-banner {
-        animation: slideDown 0.5s ease-out;
-    }
-    </style>
-</html>
+</style>
