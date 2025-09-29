@@ -28,9 +28,9 @@
 
     <form action="/register" method="POST">
         @csrf
-        <input type="text" placeholder="name">
-        <input type="text" placeholder="email">
-        <input type="password" placeholder="password">
+        <input type="text"      placeholder="name"      name="name">
+        <input type="text"      placeholder="email"     name="email">
+        <input type="password"  placeholder="password"  name="password">
         <button>Registrar</button>
     </form>
     <!-- Información de la Tienda -->

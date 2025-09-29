@@ -12,4 +12,4 @@ Route::get('/productos',[nav::class, 'productos'])  ->name('productos');
 Route::get('/pedidos',  [nav::class, 'pedidos'])    ->name('pedidos');
 Route::get('/perfil',   [nav::class, 'perfil'])     ->name('perfil');
 
-Route::post('/register',[usuarios::class, 'registrar']);
+Route::post('/register', [usuarios::class, 'registrar']);
