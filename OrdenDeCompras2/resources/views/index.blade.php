@@ -26,6 +26,13 @@
         </div>
     </div>
 
+    <form action="/register" method="POST">
+        @csrf
+        <input type="text" placeholder="name">
+        <input type="text" placeholder="email">
+        <input type="password" placeholder="password">
+        <button>Registrar</button>
+    </form>
     <!-- Información de la Tienda -->
     <div class="container">
         <div class="row">

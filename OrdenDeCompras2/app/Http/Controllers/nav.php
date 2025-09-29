@@ -22,4 +22,8 @@ class nav extends Controller
     {
         return view ('pages/login/perfil');
     }
+    public function welcome()
+    {
+        return view ('welcome');
+    }
 }
