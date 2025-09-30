@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('/') }}">Inicio</a>
+                        <a class="nav-link "href="{{ url('/') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/productos') }}">Productos</a>
@@ -32,7 +32,7 @@
                         <a class="nav-link" href="{{ url('/pedidos') }}">Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/carrito') }}">Carrito</a>
+                        <a class="nav-link active" href="{{ url('/carrito') }}">Carrito</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/perfil') }}">Perfil</a>
@@ -40,7 +40,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+</nav>
 
     <div class="container my-5">
     <div class="row">
@@ -186,7 +186,7 @@
                                     <i class="fas fa-arrow-left me-2"></i>Seguir Comprando
                                 </a>
                                 <?php 
-                                    
+
                                 ?>
                                 <button class="btn btn-outline-danger col-5" id="clearCart" style="width: 42.62%">
                                     <i class="fas fa-trash me-2"></i>Vaciar Carrito

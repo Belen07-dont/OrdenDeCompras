@@ -49,6 +49,9 @@
                         <a class="nav-link" href="{{ url('/pedidos') }}">Pedidos</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/carrito') }}">Carrito</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="{{ url('/perfil') }}">Perfil</a>
                     </li>
                     <li class="nav-item">
@@ -150,7 +153,7 @@
                     </div>
                     <div class="card-body">
                         <div class="d-grid gap-2">
-                            <button class="btn btn-edit">
+                            <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#editarPerfil">
                                 <i class="fas fa-edit me-2"></i>Editar Perfil
                             </button>
                             <button class="btn btn-outline-primary">
@@ -159,6 +162,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de editar perfil -->
+    <div class="modal" tabindex="-1" id="editarPerfil">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
             </div>
         </div>
     </div>
@@ -181,6 +202,7 @@
             <p class="text-center mb-0">© 2024 C. Store. Todos los derechos reservados.</p>
         </div>
     </footer>
+    
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

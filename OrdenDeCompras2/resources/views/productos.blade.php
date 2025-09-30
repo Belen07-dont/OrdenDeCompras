@@ -13,6 +13,7 @@
     
 </head>
 <body>
+    
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -24,10 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('/') }}">Inicio</a>
+                        <a class="nav-link " href="{{ url('/') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/productos') }}">Productos</a>
+                        <a class="nav-link active" href="{{ url('/productos') }}">Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/pedidos') }}">Pedidos</a>
@@ -43,14 +44,14 @@
         </div>
     </nav>
     @auth
-        @if(auth()->id() === 4) {{-- Replace 8 with your specific user ID --}}
+        @if(auth()->id() === 1) {{-- Replace 8 with your specific user ID --}}
             <div class="form-container">
         <div class="form-header">
             <h2><i class="fas fa-plus-circle me-2"></i>Agregar Nuevo Producto</h2>
             <p>Completa la información del producto que deseas agregar al catálogo</p>
         </div>
         
-        <!-- Form Body -->
+        <!-- Cuerpo de agregar producot-->
         <div class="form-body">
             <form action="/create-product" method="POST">
                 @csrf
@@ -136,6 +137,7 @@
             </div>
             </div>
         @else
+        <!-- Cuerpo de comprar producots-->
         <div class="form-container" style="margin: 2.5rem; ">
         <div class="form-header" style="">
             <h2>Nuestros Productos</h2>
@@ -146,7 +148,11 @@
                 @foreach($productsByCategory as $category => $products)
                 <div class="category-section">
                     <h2 style="color: white;" class="category-title">{{ $category ?: 'Sin Categoría' }}</h2>
-                    <div class="products-grid">
+                    <!--style="overflow:auto; white-space: nowrap;" en el div de justo abajo por si quiere el scroll-->
+
+                    <div class="products-grid" style="">
+
+                        <!-- Cada producto individual -->
                         @foreach($products as $product)
                             <div class="product-card">
                                 <div class="product-image-container">
@@ -161,11 +167,11 @@
                                          <button class="btn btn-primary btn-sm add-to-cart-btn"
                                                 data-bs-toggle="modal" 
                                                 data-bs-target="#addToCartModal"
-                                                data-product-id="{{ $product->id }}"
-                                                data-product-name="{{ $product->name }}"
+                                                data-product-id="   {{ $product->id }}"
+                                                data-product-name=" {{ $product->name }}"
                                                 data-product-price="{{ $product->price }}"
                                                 data-product-image="{{ asset('storage/' . $product->image) }}">
-                                            <i class="fas fa-cart-plus"></i> Add to Cart
+                                            <i class="fas fa-cart-plus"></i> Añadir al carrito
                                         </button>
                                     </div>
                                 </div>
@@ -289,7 +295,45 @@
             @endif
         </div>
     </div>
+    
+       
     @endauth
+    <div class="container" style="width: 120%">
+        
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-4 ">
+                    <h5>C. Store</h5>
+                    <p style="text-align:justify">Tu tienda de conveniencia de barrio para todas tus necesidades diarias. Productos de calidad, servicio amable y horarios convenientes.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url('/') }}" class="text-white">Inicio</a></li>
+                        <li><a href="#pasillos" class="text-white">Pasillos</a></li>
+                        <li><a href="#" class="text-white">Ofertas Semanales</a></li>
+                        <li><a href="#" class="text-white">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Conéctate con Nosotros</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="mt-3">
+                        <p class="mb-0">¡Suscríbete a nuestro boletín para recibir actualizaciones y ofertas especiales!</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 bg-light">
+            <p class="text-center mb-0">© 2023 C. Store. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    </div> 
 
     <!-- JavaScript for form enhancements -->
     <script>
@@ -316,5 +360,7 @@
         });
     });
     </script>
+    
 </body>
+
 </html>

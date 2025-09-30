@@ -289,9 +289,9 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 ">
                     <h5>C. Store</h5>
-                    <p>Tu tienda de conveniencia de barrio para todas tus necesidades diarias. Productos de calidad, servicio amable y horarios convenientes.</p>
+                    <p style="text-align:justify">Tu tienda de conveniencia de barrio para todas tus necesidades diarias. Productos de calidad, servicio amable y horarios convenientes.</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Enlaces Rápidos</h5>
