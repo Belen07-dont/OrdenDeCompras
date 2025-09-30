@@ -27,12 +27,11 @@ class CrearUsuario extends Controller
       }else{
          
       }
-
       return redirect('/');
    }
 
 
-   
+
    public function logout(){
       Auth::logout();
       return redirect('/');
@@ -51,6 +50,7 @@ class CrearUsuario extends Controller
    $user = User::create($usuario);
 
    Auth::login(user: $user);
+   return ('blehhhhhhhhhhh');
    return redirect('/');
    }
 

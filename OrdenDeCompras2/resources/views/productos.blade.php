@@ -4,32 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Producto - C.Store</title>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- In your main layout file -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
 </head>
 <body>
-
+    
     @auth
-    <div class="form-container" style="height: 100%">
-        <!-- Header -->
-        @foreach($productsByCategory as $category => $products)
-        <div class="category-section">
-            <h2 class="category-title">{{ $category }}</h2>
-            <div class="products-grid">
-                @foreach($products as $product)
-                    <div class="product-card">
-                        <h3>{{ $product->name }}</h3>
-                        <p>{{ $product->description }}</p>
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                        <p class="price">${{ number_format($product->price, 2) }}</p>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-        @endforeach
-    @else
-        <div class="form-container">
+        @if(auth()->id() === 1) {{-- Replace 8 with your specific user ID --}}
+            <div class="form-container">
         <div class="form-header">
             <h2><i class="fas fa-plus-circle me-2"></i>Agregar Nuevo Producto</h2>
             <p>Completa la información del producto que deseas agregar al catálogo</p>
@@ -119,12 +106,99 @@
             </form>
         </div>
     </div>
+            </div>
+        @endif
+    
+    @else
+    <div class="form-container" style="margin: 2.5rem; ">
+        <div class="form-header" style="">
+            <h2>Nuestros Productos</h2>
+            <p>Explora nuestra amplia selección organizada por categorías</p>
+        </div>    
+        <div class="form-body" style=" background-color: #5d607c;">
+            @if(isset($productsByCategory) && $productsByCategory->count())
+                @foreach($productsByCategory as $category => $products)
+                <div class="category-section">
+                    <h2 style="color: white;" class="category-title">{{ $category ?: 'Sin Categoría' }}</h2>
+                    <div class="products-grid">
+                        @foreach($products as $product)
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
+                                    <span class="category-badge">{{ $category }}</span>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-name">{{ $product->name }}</h3>
+                                    <p class="product-description">{{ Str::limit($product->description, 100) }}</p>
+                                    <div class="product-footer">
+                                        <p class="price">${{ number_format($product->price, 2) }}</p>
+                                         <button class="btn btn-primary btn-sm add-to-cart-btn"
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#addToCartModal"
+                                                data-product-id="{{ $product->id }}"
+                                                data-product-name="{{ $product->name }}"
+                                                data-product-price="{{ $product->price }}"
+                                                data-product-image="{{ asset('storage/' . $product->image) }}">
+                                            <i class="fas fa-cart-plus"></i> Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addToCartModalLabel">Add to Cart</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <img id="modalProductImage" src="{{asset('img/'. $product->image)}}" alt="no hay imagen w" class="img-fluid mb-3" style="max-height: 150px;">
+                                            <h4 id="modalProductName"></h4>
+                                            <p class="price" id="modalProductPrice"></p>
+                                        </div>
+                                        <form action="" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" id="modalProductId">
+                                            <div class="mb-3">
+                                                <label for="quantity" class="form-label">Quantity:</label>
+                                                <input type="number" name="quantity" class="form-control" value="1" min="1">
+                                            </div>
+                                            <button type="submit" class="btn btn-success w-100">
+                                                <i class="fas fa-cart-plus"></i> Add to Cart
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            @else
+                <div class="empty-cart">
+                    <i class="fas fa-box-open"></i>
+                    <h3>No hay productos disponibles</h3>
+                    <p>No se encontraron productos en esta categoría.</p>
+                </div>
+            @endif
+        </div>
     </div>
     @endauth
-    
 
     <!-- JavaScript for form enhancements -->
     <script>
+    // Populate modal with product data
+    document.getElementById('addToCartModal').addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        
+        document.getElementById('modalProductId').value = button.getAttribute('data-product-id');
+        document.getElementById('modalProductName').textContent = button.getAttribute('data-product-name');
+        document.getElementById('modalProductPrice').textContent = '$' + button.getAttribute('data-product-price');
+        document.getElementById('modalProductImage').src = button.getAttribute('data-product-image');
+    });    
     document.addEventListener('DOMContentLoaded', function() {
         // Add input animations
         const inputs = document.querySelectorAll('.form-control');
@@ -140,202 +214,4 @@
     });
     </script>
 </body>
-<style>
-                .category-section {
-            margin-bottom: 3rem;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 2rem;
-        }
-
-        .category-title {
-            color: #333;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            text-transform: capitalize;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .product-card {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            border-radius: 8px;
-            background: #fff;
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .price {
-            font-weight: bold;
-            color: #2c5aa0;
-            font-size: 1.2rem;
-        }
-                :root {
-            --primary-color: #ff6b35;
-            --secondary-color: #2EC4B6;
-            --accent-color: #FF9F1C;
-            --dark-color: #2D3047;
-            --light-color: #F8F9FA;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(160deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .form-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .form-header {
-            background: linear-gradient(135deg, var(--dark-color), #3a3f5c);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .form-header h2 {
-            margin: 0;
-            font-weight: 700;
-        }
-        
-        .form-header p {
-            margin: 10px 0 0 0;
-            opacity: 0.9;
-        }
-        
-        .form-body {
-            padding: 40px;
-        }
-        
-        .form-label {
-            color: var(--dark-color);
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .input-group {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .input-group:focus-within {
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        .input-group-text {
-            background: linear-gradient(135deg, var(--light-color), #e9ecef);
-            border: none;
-            color: var(--dark-color);
-            font-weight: 600;
-            min-width: 50px;
-            justify-content: center;
-        }
-        
-        .form-control {
-            border: none;
-            padding: 15px;
-            font-size: 1rem;
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            background: #fafbfc;
-            box-shadow: none;
-        }
-        
-        .form-control:read-only {
-            background: var(--light-color);
-            color: var(--dark-color);
-            font-weight: 600;
-        }
-        
-        textarea.form-control {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .form-text {
-            color: #6c757d;
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
-        
-        .btn-submit {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border: none;
-            color: white;
-            padding: 18px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 10px;
-        }
-        
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-        }
-        
-        .btn-submit:active {
-            transform: translateY(-1px);
-        }
-        
-        .form-section {
-            margin-bottom: 30px;
-        }
-        
-        .section-title {
-            color: var(--dark-color);
-            font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--light-color);
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--primary-color);
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .form-body {
-                padding: 25px;
-            }
-            
-            body {
-                padding: 10px;
-            }
-        }
-    </style>
 </html>
