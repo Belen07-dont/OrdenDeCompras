@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Perfil - C.Store</title>
-    <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -169,39 +167,68 @@
     <div class="modal" tabindex="-1" id="editarPerfil">
         <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header footer" style="padding: 10px;">
+                <h5 class="modal-title fs-3">Editar perfil</h5>
+                <button type="button" class="btn-close bg-dark-subtle"style="margin-right:10px" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <form action="/edit-user" method="POST" class="text-center">
+                    @csrf
+                    <div class="form-group">
+                        <label for="email" class="fw-bold fs-4 my-0">Usuario:</label>
+                        <input type="text" id="name"  class="w-75 fs-5"  name="name" value= "{{ auth()->user()->name }}">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="email" class="fw-bold fs-4 my-0">Email:</label>
+                        <input type="text" id="email" class="w-75 fs-5"  name="email" value="{{ auth()->user()->email }}">
+                    </div>
+                    
+                    <br>
+                    <button type="submit" id="" class="btn btn-primary my-0 w-50 fs-5">Guardar Cambios</button>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                
             </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer mt-5">
+    <!-- Pie de Página -->
+    <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row ">
+                <div class="col-md-4 ">
                     <h5>C. Store</h5>
-                    <p>Tu tienda de conveniencia de barrio para todas tus necesidades diarias.</p>
+                    <p style="text-align:justify">Tu tienda de conveniencia de barrio para todas tus necesidades diarias. Productos de calidad, servicio amable y horarios convenientes.</p>
                 </div>
-                <div class="col-6 text-end social-icons">
-                    <a href="#"><i class="fab fa-facebook"> </i></a>
-                    <a href="#"><i class="fab fa-twitter">  </i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url('/') }}" class="text-white">Inicio</a></li>
+                        <li><a href="#pasillos" class="text-white">Pasillos</a></li>
+                        <li><a href="#" class="text-white">Ofertas Semanales</a></li>
+                        <li><a href="#" class="text-white">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Conéctate con Nosotros</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="mt-3">
+                        <p class="mb-0">¡Suscríbete a nuestro boletín para recibir actualizaciones y ofertas especiales!</p>
+                    </div>
                 </div>
             </div>
             <hr class="mt-4 bg-light">
-            <p class="text-center mb-0">© 2024 C. Store. Todos los derechos reservados.</p>
+            <p class="text-center mb-0">© 2023 C. Store. Todos los derechos reservados.</p>
         </div>
     </footer>
+    </div> 
     
 
     <!-- Bootstrap JS -->

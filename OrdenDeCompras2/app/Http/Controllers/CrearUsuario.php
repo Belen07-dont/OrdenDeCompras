@@ -53,6 +53,22 @@ class CrearUsuario extends Controller
    return ('blehhhhhhhhhhh');
    return redirect('/');
    }
+   
+
+     
+   public function edituser(CrearUsuario $actualizacion, Request $request){
+         $userid = auth()->user()->id;
+
+         $usernewname   = $request->input('name');
+         $usernewemail  = $request->input('email');
+
+         $actualizacion =User::where('id', $userid)->limit(1)->update([
+                        'name' => $usernewname,
+                        'email'=> $usernewemail
+         ]);
+       return view('index');
+   }
+
 
    
 

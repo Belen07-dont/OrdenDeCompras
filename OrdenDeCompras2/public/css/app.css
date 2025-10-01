@@ -1002,3 +1002,23 @@ textarea.form-control {
         font-size: 1.1rem;
     }
 }
+.contenedor-formulario { /* Contenedor padre de los form-group */
+  display: flex;
+  flex-direction: column; /* Para apilar los grupos verticalmente */
+  align-items: flex-start; /* Para alinear los ítems al inicio del eje transversal */
+}
+
+.form-group {
+  align-items: end; /* Centra verticalmente label e input dentro de cada grupo */
+  text-align: end;
+  margin-bottom: 10px; /* Espacio entre grupos */
+}
+
+.form-group label {
+  width: 20.3333333%; /* Ancho fijo para las labels para que los inputs comiencen en el mismo punto */
+  display: inline-block; /* Permite aplicar ancho a la label */
+  text-align: left; /* Alinea el texto de la label a la derecha */
+  margin-right: 10px;
+}
+.form-group input{
+}

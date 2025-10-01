@@ -19,7 +19,10 @@ Route::post(uri: '/login', action: [CrearUsuario::class, 'login']);
 
 
 //lista para productos
-Route::post('/create-product', [PostController::class, 'createprod']);
+Route::post('/create-product',  [PostController::class, 'createprod']);
+
+//Perfil
+Route::post('/edit-user',     [CrearUsuario::class, 'edituser']);
 
 // Index
 Route::get('/', function () {

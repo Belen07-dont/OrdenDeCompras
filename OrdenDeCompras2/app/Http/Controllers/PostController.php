@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 
 
 
-
 class PostController extends Controller
 {
     public function createprod(Request $request){
