@@ -771,6 +771,9 @@ textarea.form-control {
     position: relative;
     overflow: hidden;
 }
+.pedidos:hover{
+    color:white;
+}
 
 .product-card img {
     width: 100%;

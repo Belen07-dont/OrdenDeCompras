@@ -6,6 +6,7 @@ use App\Http\Controllers\CrearUsuario;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', function () {
     return view('index');
@@ -29,6 +30,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/pedidos', function () {
+    return view('pedidos');
+});
 // Login 
 Route::get('/login', function () {
     return view('login');
@@ -46,7 +50,7 @@ Route::get('/signin', function () {
 Route::post('/cart',        [CartController::class, 'addToCart'])   ->name('cart');
 Route::get('/cart',         [CartController::class, 'index'])       ->name('carrito.index');
 Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.remove');
-Route::delete('/cart', [CartController::class, 'clearCart'])->name('cart.clear');
+Route::delete('/cart',  [CartController::class, 'clearCart'])->name('cart.clear');
 
 
 Route::post('/checkout', [CheckoutController::class, 'pay'])->name('checkout.pay');
