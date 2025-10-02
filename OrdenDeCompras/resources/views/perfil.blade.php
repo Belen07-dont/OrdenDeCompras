@@ -68,9 +68,10 @@
     <!-- Profile Hero Section -->
     <div class="profile-hero">
         <div class="container">
-            <div class="profile-avatar">
-                <i class="fas fa-user "></i>
+            <div class="profile-avatar ">
+                <img class="rounded-circle" src="{{ asset('img/' .auth()->user()->image) }}" alt="no img?" style="width:100px; height:100px;">
             </div>
+            <p></p>
             <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
             <p class="lead">Miembro de C.Store desde {{ auth()->user()->created_at->format('F Y') }}</p>
         </div>
@@ -184,6 +185,11 @@
                     <div class="form-group">
                         <label for="email" class="fw-bold fs-4 my-0">Email:</label>
                         <input type="text" id="email" class="w-75 fs-5"  name="email" value="{{ auth()->user()->email }}">
+                    </div>
+                    <br>
+                    <div class="form-group text-start my-0 mx-0 ">
+                        <label for="image" class="fw-bold fs-4 my-0 mx-2">Foto:</label>
+                        <input name="image" type="file" class="form-control" id="image" placeholder="https://ejemplo.com/imagen.jpg">
                     </div>
                     
                     <br>

@@ -50,21 +50,25 @@ class CrearUsuario extends Controller
    $user = User::create($usuario);
 
    Auth::login(user: $user);
-   return ('blehhhhhhhhhhh');
    return redirect('/');
    }
    
 
      
    public function edituser(CrearUsuario $actualizacion, Request $request){
-         $userid = auth()->user()->id;
+         $userid     = auth()->user()->id;
+         $username   = auth()->user()->name;
+         $useremail  = auth()->user()->email;
+         $userimage  = auth()->user()->image;
 
          $usernewname   = $request->input('name');
          $usernewemail  = $request->input('email');
+         $usernewimage  = $request->input('image');
 
          $actualizacion =User::where('id', $userid)->limit(1)->update([
-                        'name' => $usernewname,
-                        'email'=> $usernewemail
+            'name' => $usernewname,
+            'email'=> $usernewemail,
+            'image'=> $usernewimage
          ]);
        return view('index');
    }
