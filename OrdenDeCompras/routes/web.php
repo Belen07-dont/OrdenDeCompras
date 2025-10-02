@@ -42,10 +42,16 @@ Route::get('/signin', function () {
     return view('sign');
 });
 
-//Direcciones de Carrito
+//Direcciones de Carrito, que añaden, muestran, actualizan, eliminan items singulares, y vacian todo el carrito
 Route::post('/cart',        [CartController::class, 'addToCart'])   ->name('cart');
 Route::get('/cart',         [CartController::class, 'index'])       ->name('carrito.index');
-    
+Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.remove');
+Route::delete('/cart', [CartController::class, 'clearCart'])->name('cart.clear');
+
+
+Route::post('/checkout', [CheckoutController::class, 'pay'])->name('checkout.pay');
+
+
 
 Route::get('/carrito', function () {
     return view('carrito');
