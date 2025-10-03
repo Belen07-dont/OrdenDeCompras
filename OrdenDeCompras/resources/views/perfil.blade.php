@@ -68,9 +68,11 @@
     <!-- Profile Hero Section -->
     <div class="profile-hero">
         <div class="container">
-            <div class="profile-avatar ">
-                <img class="rounded-circle" src="{{ asset('img/' .auth()->user()->image) }}" alt="no img?" style="width:100px; height:100px;">
-            </div>
+            
+            
+            
+            
+            
             <p></p>
             <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
             <p class="lead">Miembro de C.Store desde {{ auth()->user()->created_at->format('F Y') }}</p>
@@ -81,9 +83,9 @@
     <div class="container">
         <div class="row">
             <!-- Left Column - User Info -->
-            <div class="col-lg-8 ">
+            <div class="col-lg-9 d-flex">
                 <!-- Personal Information Card -->
-                <div class="profile-card col-10">
+                <div class="profile-card col-6">
                     <div class="profile-card-header">
                         <i class="fas fa-user-circle me-2"></i>Información Personal
                     </div>
@@ -108,8 +110,8 @@
                 </div>
 
                 <!-- Recent Activity -->
-                <div class="profile-card mt-4">
-                    <div class="profile-card-header">
+                <div class="profile-card col-6 my-0 mx-3 mt-0" style="margin-top:0">
+                    <div class="profile-card-header my-0">
                         <i class="fas fa-history me-2"></i>Actividad Reciente
                     </div>
                     <div class="card-body">
@@ -132,7 +134,7 @@
             </div>
 
             <!-- Right Column - Stats & Actions -->
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <!-- Quick Stats -->
                 <div class="stats-card mb-4">
                     <div class="stats-number">0</div>
@@ -146,7 +148,7 @@
                 
                 <br><br><br>
                 <!-- Quick Actions -->
-                <div class="profile-card">
+                <div class="profile-card sticky-top">
                     <div class="profile-card-header">
                         <i class="fas fa-bolt me-2"></i>Acciones Rápidas
                     </div>

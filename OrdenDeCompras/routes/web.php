@@ -53,7 +53,7 @@ Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.remo
 Route::delete('/cart',  [CartController::class, 'clearCart'])->name('cart.clear');
 
 
-Route::post('/checkout', [CheckoutController::class, 'pay'])->name('checkout.pay');
+Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('checkout.pay');
 
 
 

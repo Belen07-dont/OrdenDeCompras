@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Cart;
+
 use App\Models\Pedido;
 use App\Models\Checkout;
 use App\Models\PedidoItem;
@@ -12,9 +13,11 @@ use Illuminate\Support\Facades\DB;
 use function Laravel\Prompts\alert;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+
 class CheckoutController extends Controller
 {
-    public function pay(){
+    public function index()
+    {
         $userId = Auth::id();
         
         $cartItems = Cart::with('product')
@@ -27,7 +30,7 @@ class CheckoutController extends Controller
         $impuesto = $this->calculateTax($subtotal);
         $total = $subtotal + $envio + $impuesto;
 
-        return view('checkout', [
+        return view('checkout.index', [
             'cartItems' => $cartItems,
             'subtotal' => $subtotal,
             'envio' => $envio,
@@ -35,6 +38,10 @@ class CheckoutController extends Controller
             'total' => $total
         ]);
     }
+
+    /**
+     * Process the checkout and create order
+     */
     public function processCheckout(Request $request)
 {
     try {
@@ -102,7 +109,7 @@ class CheckoutController extends Controller
             'message' => 'Failed to process order: ' . $e->getMessage()
         ], 500);
     }
-    }
+}
 
     private function calculateShipping($subtotal)
     {
@@ -115,5 +122,7 @@ class CheckoutController extends Controller
         
         return $subtotal * 0.15;
     }
+
+    
 
 }

@@ -31,7 +31,7 @@
 
 <!-- Your existing navbar -->
     <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <i class="fas fa-store me-2"></i>C Store

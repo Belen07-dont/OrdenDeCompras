@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cart_id');
             $table->unsignedBigInteger('user_id');
             $table->decimal('SubTotal', 8, 2);
             $table->decimal('Envio', 8, 2);
@@ -22,10 +21,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Add foreign keys manually with explicit references
-            $table->foreign('cart_id')
-                ->references('id')
-                ->on('cart')
-                ->onDelete('cascade');
+            
                 
             $table->foreign('user_id')
                 ->references('id')
@@ -38,7 +34,6 @@ public function down(): void
 {
     Schema::table('pedidos', function (Blueprint $table) {
         
-        $table->dropForeign(['cart_id']);
         $table->dropForeign(['user_id']);
     });
     

@@ -57,9 +57,7 @@ class CrearUsuario extends Controller
      
    public function edituser(CrearUsuario $actualizacion, Request $request){
          $userid     = auth()->user()->id;
-         $username   = auth()->user()->name;
-         $useremail  = auth()->user()->email;
-         $userimage  = auth()->user()->image;
+         
 
          $usernewname   = $request->input('name');
          $usernewemail  = $request->input('email');
@@ -70,7 +68,10 @@ class CrearUsuario extends Controller
             'email'=> $usernewemail,
             'image'=> $usernewimage
          ]);
-       return view('index');
+         $username   = auth()->user()->name;
+         $useremail  = auth()->user()->email;
+         $userimage  = auth()->user()->image;
+       return redirect('/');
    }
 
 

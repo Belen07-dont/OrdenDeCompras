@@ -135,7 +135,8 @@
             </form>
         </div>
             </div>
-            </div>
+        <!-- Pie de Página -->
+    
         @else
         <!-- Cuerpo de comprar producots-->
         <div class="form-container" style="margin: 2.5rem; ">
@@ -195,11 +196,11 @@
                                             @csrf
                                             <input type="hidden" name="product_id" id="modalProductId">
                                             <div class="mb-3">
-                                                <label for="quantity" class="form-label">Quantity:</label>
+                                                <label for="quantity" class="form-label">Cantidad:</label>
                                                 <input type="number" name="quantity" class="form-control" value="1" min="1">
                                             </div>
                                             <button type="" class="btn btn-success w-100">
-                                                <i class="fas fa-cart-plus"></i> Add to Cart
+                                                <i class="fas fa-cart-plus"></i> Añadir al carrito
                                             </button>
                                         </form>
                                     </div>
@@ -248,7 +249,7 @@
                                                 data-product-name="{{ $product->name }}"
                                                 data-product-price="{{ $product->price }}"
                                                 data-product-image="{{ asset('storage/' . $product->image) }}">
-                                            <i class="fas fa-cart-plus"></i> Add to Cart
+                                            <i class="fas fa-cart-plus"></i>Añadir al carrito
                                         </button>
                                     </div>
                                 </div>
@@ -259,7 +260,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="addToCartModalLabel">Add to Cart</h5>
+                                        <h5 class="modal-title" id="addToCartModalLabel">Añadir al carrito</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -272,11 +273,11 @@
                                             @csrf
                                             <input type="hidden" name="product_id" id="modalProductId">
                                             <div class="mb-3">
-                                                <label for="quantity" class="form-label">Quantity:</label>
+                                                <label for="quantity" class="form-label">Cantidad:</label>
                                                 <input type="number" name="quantity" class="form-control" value="1" min="1">
                                             </div>
                                             <button type="" class="btn btn-success w-100">
-                                                <i class="fas fa-cart-plus"></i> Add to Cart
+                                                <i class="fas fa-cart-plus"></i> Añadir al carrito
                                             </button>
                                         </form>
                                     </div>
@@ -298,9 +299,10 @@
     
        
     @endauth
+    
     <div class="container" style="width: 120%">
-        
-    <!-- Pie de Página -->
+    
+    </div> 
     <footer class="footer">
         <div class="container">
             <div class="row ">
@@ -333,7 +335,6 @@
             <p class="text-center mb-0">© 2023 C. Store. Todos los derechos reservados.</p>
         </div>
     </footer>
-    </div> 
 
     <!-- JavaScript for form enhancements -->
     <script>
