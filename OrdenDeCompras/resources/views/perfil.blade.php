@@ -11,20 +11,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <!-- Auth Status Banner -->
-    <div class="auth-status-banner">
-        @auth
-            <div class="auth-success">
-                <i class="fas fa-check-circle me-2"></i>
-                ¡Bienvenido de vuelta, {{ auth()->user()->name }}!
-            </div>
-        @else
-            <div class="auth-warning">
-                <i class="fas fa-exclamation-circle me-2"></i>
-                No has iniciado sesión. <a href="{{ url('/login') }}" class="auth-link">Inicia sesión aquí</a>
-            </div>
-        @endauth
-    </div>
+    
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -68,19 +55,42 @@
     <!-- Profile Hero Section -->
     <div class="profile-hero">
         <div class="container">
-            
-            
-            
-            
-            
-            <p></p>
-            <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
-            <p class="lead">Miembro de C.Store desde {{ auth()->user()->created_at->format('F Y') }}</p>
+            @auth
+                @if(auth()->user()->image=="")
+                    <div class="profile-avatar ">
+                        <img src="{{asset('img/login.jpg')}}" alt="" class="product-image rounded-circle" style="width:100px; height:100px">
+                    </div>
+                    <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
+                    <p class="lead">Miembro de C.Store desde {{ auth()->user()->created_at->format('F Y') }}</p>
+                @else
+                    <div class="profile-avatar " style="height: 300px; width:300px; position:absolute">
+                        <img src="{{ asset('img/pfps/' . auth()->user()->image) }}" alt="" class="product-image rounded-circle" style="width:300px; height:300px">
+                    </div>
+                    <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
+                    <p class="lead">Miembro de C.Store desde {{ auth()->user()->created_at->format('F Y') }}</p>
+                @endif
+                @else
+                <div class="header-card">
+                    <div class="empty-state text-light">
+                        <i class="fas fa-exclamation-circle " style="width:100px;"></i>
+                        <h3 class="h4 mb-3">Acceso no autorizado</h3>
+                        <h5 class="text-muted mb-4 text-dark">Debes iniciar sesión para ver tu perfil.</h5>
+                        <a href="{{ url('/login') }}" class="btn btn-primary">
+                            <i class="fas fa-user m-2" style="font-size: 2.5rem"></i><h6>Ir a crear una cuenta</h6>
+                        </a>
+                    </div>
+                </div>
+            @endauth
         </div>
     </div>
 
     <!-- Profile Content -->
     <div class="container">
+        @auth
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="row">
             <!-- Left Column - User Info -->
             <div class="col-lg-9 d-flex">
@@ -167,9 +177,13 @@
                 </div>
             </div>
         </div>
+        @else
+
+        @endauth
     </div>
     <!-- Modal de editar perfil -->
     <div class="modal" tabindex="-1" id="editarPerfil">
+        @auth
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header footer" style="padding: 10px;">
@@ -203,6 +217,9 @@
             </div>
             </div>
         </div>
+        @else
+
+        @endauth
     </div>
 
     <!-- Pie de Página -->

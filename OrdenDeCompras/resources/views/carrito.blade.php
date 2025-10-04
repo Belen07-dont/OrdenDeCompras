@@ -115,11 +115,11 @@
                                 <td class="subtotal">${{ number_format($item->subtotal, 2) }}</td>
                                 <td>
                                 <form action="{{ route('cart.remove', $item->id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('¿Estás seguro?')">
-                                            <i class="fas fa-trash m-1"></i>
-                                        </button>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger" onclick="return confirm('¿Estás seguro?')">
+                                        <i class="fas fa-trash m-1"></i>
+                                    </button>
                                 </form>
                                 </td>
                             </tr>
@@ -127,12 +127,12 @@
                             @endforeach
                             @else
                                 <td colspan="8" class="text-center py-4">
-                                    <div class="empty-cart">
-                                        <i class="fas fas fa-exclamation-circle text-danger mb-3" style="font-size: 8rem"></i>
+                                    <div class="empty-state">
+                                        <i class="fas fa-exclamation-circle"></i>
                                         <h4>Parece que estas no ingresado a tu cuenta</h4>
                                         <p class="text-muted">Inicia sesion o crea una nueva cuenta para acceder al carrito</p>
                                         <a href="{{ url('/login') }}" class="btn btn-primary">
-                                            <i class="fas fa-user m-2" style="font-size: 2.5rem"></i><h6>Ir a iniciar sesion</h6>
+                                            <i class="fas fa-user m-2" style="font-size: 2.5rem"></i><h6>Ir a crear una cuenta</h6>
                                         </a>
                                     </div>
                                 </td>

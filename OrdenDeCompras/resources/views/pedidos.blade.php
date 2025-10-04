@@ -208,13 +208,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('/') }}">Inicio</a>
+                        <a class="nav-link " href="{{ url('/') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/productos') }}">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/pedidos') }}">Pedidos</a>
+                        <a class="nav-link active" href="{{ url('/pedidos') }}">Pedidos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/carrito') }}">Carrito</a>
@@ -376,8 +376,8 @@
                     <i class="fas fa-exclamation-circle"></i>
                     <h3 class="h4 mb-3">Acceso no autorizado</h3>
                     <p class="text-muted mb-4">Debes iniciar sesión para ver tu historial de pedidos.</p>
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-lg">
-                        <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+                    <a href="{{ url('/login') }}" class="btn btn-primary">
+                        <i class="fas fa-user m-2" style="font-size: 2.5rem"></i><h6>Ir a crear una cuenta</h6>
                     </a>
                 </div>
             </div>

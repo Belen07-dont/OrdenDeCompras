@@ -18,14 +18,15 @@ class CrearUsuario extends Controller
 {
    public function login(Request $request){
       $usuario = $request->validate([
-         'loginname' => 'required',
-         'loginpassword' => 'required'
+         'Nombre' =>       'required',
+         'Contraseña' =>   'required'
       ]);
 
-      if(Auth::attempt(['name' => $usuario['loginname'], 'password' => $usuario['loginpassword']])){
+      if(Auth::attempt(['name' => $usuario['Nombre'], 'password' => $usuario['Contraseña']])){
          $request->session()->regenerate();
       }else{
          
+         return("boo");
       }
       return redirect('/');
    }
@@ -41,7 +42,7 @@ class CrearUsuario extends Controller
 
    public function guardar(Request $request): string{
     $usuario = $request->validate(rules: [
-      'name' =>      ['required', 'min:3', 'max:10', Rule::unique('users', 'name')],
+      'name' =>      ['required', 'min:3', 'max:20', Rule::unique('users', 'name')],
       'email' =>     ['required', 'email', Rule::unique('users', 'email')],
       'password' =>  ['required', 'min:8', 'max:200']
     ]);

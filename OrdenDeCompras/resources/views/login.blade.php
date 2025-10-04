@@ -33,7 +33,12 @@
                                     <span class="input-group-text bg-light border-end-0">
                                         <i class="fas fa-user text-muted"></i>
                                     </span>
-                                    <input name="name" type="text" class="form-control border-start-0" id="name" placeholder="Ingresa tu nombre completo" >
+                                    <input name="name" type="text" class="form-control  @error('name') is-invalid @enderror" id="name" placeholder="Ingresa tu nombre completo" >
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>Su nombre tiene que tener entre 3 a 20 caracteres</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             
@@ -43,7 +48,12 @@
                                     <span class="input-group-text bg-light border-end-0">
                                         <i class="fas fa-envelope text-muted"></i>
                                     </span>
-                                    <input name="email" class="form-control border-start-0" id="email" placeholder="tu@email.com" >
+                                    <input name="email" class="form-control  @error('email') is-invalid @enderror" id="email" placeholder="tu@email.com" >
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>Lo que inserto no tiene formato de correo</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             
@@ -53,7 +63,12 @@
                                     <span class="input-group-text bg-light border-end-0">
                                         <i class="fas fa-lock text-muted"></i>
                                     </span>
-                                    <input type="password" name="password" class="form-control border-start-0" id="password" placeholder="Crea una contraseña segura" >
+                                    <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="password" placeholder="Crea una contraseña segura" >
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>Su contraseña debe tener un mínimo de 8 caracteres</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-text text-end">Mínimo 8 caracteres</div>
                             </div>

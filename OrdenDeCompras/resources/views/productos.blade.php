@@ -135,14 +135,12 @@
             </form>
         </div>
             </div>
-        <!-- Pie de Página -->
-    
         @else
-        <!-- Cuerpo de comprar producots-->
+        <!-- Cuerpo de comprar productos-->
         <div class="form-container" style="margin: 2.5rem; ">
         <div class="form-header" style="">
             <h2>Nuestros Productos</h2>
-            <p>Explora nuestra amplia selección organizada por categorías</p>
+            <p>Explora nuestra amplia selección organizada</p>
         </div>    
         <div class="form-body" style=" background-color: #5d607c;">
             @if(isset($productsByCategory) && $productsByCategory->count())
@@ -157,8 +155,8 @@
                         @foreach($products as $product)
                             <div class="product-card">
                                 <div class="product-image-container">
-                                    <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
-                                    <span class="category-badge">{{ $category }}</span>
+                                    <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->name }}" class="product-image" id="">
+                                    <span class="category-badge" id="{{ $category }}">{{ $category }}</span>
                                 </div>
                                 <div class="product-content">
                                     <h3 class="product-name">{{ $product->name }}</h3>
@@ -183,7 +181,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="addToCartModalLabel">Add to Cart</h5>
+                                        <h5 class="modal-title" id="addToCartModalLabel">Añadir al carrito</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">

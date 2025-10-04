@@ -73,14 +73,6 @@
     <!-- Información de la Tienda -->
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mx-auto">
-                <div class="promo-banner">
-                    <h4><i class="fas fa-tag me-2"></i>Oferta de la Semana: Compra 2 y Lleva 1 Gratis en Snacks</h4>
-                    <p class="mb-0">Oferta válida hasta el domingo</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-6">
                 <div class="store-hours">
                     <h4><i class="fas fa-clock me-2"></i>Horario de Atención</h4>
@@ -92,9 +84,9 @@
             <div class="col-md-6">
                 <div class="store-hours" style="background: var(--dark-color);">
                     <h4><i class="fas fa-map-marker-alt me-2"></i>Ubicación</h4>
-                    <p class="mb-1">Calle Principal 123</p>
-                    <p class="mb-1">Ciudad, CP 12345</p>
-                    <p class="mb-0">Teléfono: (555) 123-4567</p>
+                    <p class="mb-1">Calle Real Centenario, A la par del Hotel Elvir</p>
+                    <p class="mb-1">Santa Rosa de Cópan</p>
+                    <p class="mb-0">Teléfono: (+504) 3213-4657</p>
                 </div>
             </div>
         </div>
@@ -103,7 +95,7 @@
     <!-- Exhibición de Pasillos -->
     <section id="pasillos" class="py-5">
         <div class="container">
-            <h2 class="section-title text-center">Explora Nuestros Pasillos</h2>
+            <h2 class="section-title text-center">Mira Nuestros Pasillos</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="aisle-card card">
@@ -113,7 +105,7 @@
                             <h5 class="card-title">Snacks</h5>
                             <p class="card-text">Encuentra todos tus snacks favoritos, papas fritas y pretzels en este pasillo. Perfectos para fiestas o para picar.</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">Explorar</a>
+                                <a href="{{ url('/productos#Snacks') }}" class="btn btn-primary">Explorar</a>
                                 <span class="badge bg-success">Popular</span>
                             </div>
                         </div>
@@ -127,7 +119,7 @@
                             <h5 class="card-title">Bebidas</h5>
                             <p class="card-text">Refréscate con nuestra amplia selección de refrescos, jugos, agua y bebidas energéticas. También tenemos sección fría.</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">Explorar</a>
+                                <a href="{{ url('/productos#Bebidas') }}" class="btn btn-primary">Explorar</a>
                                 <span class="badge bg-info">Nuevos Productos</span>
                             </div>
                         </div>
@@ -141,7 +133,7 @@
                             <h5 class="card-title">Alimentos Congelados</h5>
                             <p class="card-text">Desde helados hasta cenas congeladas, tenemos todo lo que necesitas para una comida rápida y fácil.</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">Explorar</a>
+                                <a href="{{ url('/productos#Congelados') }}" class="btn btn-primary">Explorar</a>
                                 <span class="badge bg-warning text-dark">Oferta</span>
                             </div>
                         </div>
@@ -157,7 +149,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Lácteos y Huevos</h5>
                             <p class="card-text">Leche fresca, queso, yogur y huevos. Abastecemos de granjas locales para los productos más frescos.</p>
-                            <a href="#" class="btn btn-primary">Explorar</a>
+                            <a href="{{ url('/productos#Lácteos') }}" class="btn btn-primary">Explorar</a>
                         </div>
                     </div>
                 </div>
@@ -168,21 +160,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Panadería</h5>
                             <p class="card-text">Pan fresco, pasteles y postres entregados diariamente. ¡No te pierdas nuestras famosas galletas con chispas de chocolate!</p>
-                            <a href="#" class="btn btn-primary">Explorar</a>
+                            <a href="{{ url('/productos#Panadería') }}" class="btn btn-primary">Explorar</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="aisle-card card">
-                        <span class="category-badge">Hogar</span>
-                        <img src="{{ asset('img/essentials.jpg') }}" class="card-img-top" alt="Productos para el Hogar">
-                        <div class="card-body">
-                            <h5 class="card-title">Productos para el Hogar</h5>
-                            <p class="card-text">Desde productos de limpieza hasta artículos de tocador básicos, tenemos todos los esenciales que necesitas para tu hogar.</p>
-                            <a href="#" class="btn btn-primary">Explorar</a>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -212,26 +194,26 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Gerente de Tienda" class="team-img">
+                        <img src="{{ asset('img/pfps/pfp6.png') }}" alt="Gerente de Tienda" class="team-img">
                         <h4>Belen Ferrera</h4>
                         <p class="text-muted">Gerente de Tienda</p>
-                        <p>Con más de 10 años en gestión minorista, María asegura que nuestra tienda funcione sin problemas y que nuestros clientes siempre estén satisfechos.</p>
+                        <p>Con menos de 10 años en gestión minorista, Belen asegura que nuestra tienda funcione sin problemas y que nuestros clientes siempre estén satisfechos.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Subgerente" class="team-img">
+                        <img src="{{ asset('img/pfps/pfp4.png') }}" alt="Subgerente" class="team-img">
                         <h4>Dereck Leon</h4>
                         <p class="text-muted">Subgerente</p>
-                        <p>James se encarga del inventario y las relaciones con los proveedores, asegurándose de que siempre estemos surtidos con tus productos favoritos.</p>
+                        <p>Dereck se encarga del inventario y las relaciones con los proveedores, asegurándose de que siempre estemos surtidos con tus productos favoritos.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Cajera Principal" class="team-img">
+                        <img src="{{ asset('img/pfps/pfp2.png') }}" alt="Cajera Principal" class="team-img">
                         <h4>Brenda Serrano</h4>
                         <p class="text-muted">Cajera Principal</p>
-                        <p>Es probable que veas a Sarah en la caja con una sonrisa. Lleva 5 años con nosotros y conoce a todos nuestros clientes habituales por su nombre.</p>
+                        <p>Es probable que veas a Brenda en la caja con una sonrisa. Lleva menos 5 años con nosotros y conoce a todos nuestros clientes habituales por su nombre.</p>
                     </div>
                 </div>
             </div>
@@ -247,10 +229,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Información de la Tienda</h5>
-                            <p><i class="fas fa-map-marker-alt me-2"></i> Calle Principal 123, Ciudad, CP 12345</p>
-                            <p><i class="fas fa-phone me-2"></i> (555) 123-4567</p>
-                            <p><i class="fas fa-envelope me-2"></i> info@cstore.com</p>
-                            <div class="mt-4">
+                            <p class="mb-1">Calle Real Centenario, A la par del Hotel Elvir</p>
+                            <p class="mb-1">Santa Rosa de Cópan</p>
+                            <p class="mb-0">Teléfono: (+504) 3213-4657</p>
                                 <h6>Horario de Atención:</h6>
                                 <p class="mb-1">Lunes-Viernes: 6:00 AM - 11:00 PM</p>
                                 <p class="mb-1">Sábado: 7:00 AM - 11:00 PM</p>

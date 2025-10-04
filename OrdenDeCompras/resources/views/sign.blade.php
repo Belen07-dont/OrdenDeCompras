@@ -52,7 +52,8 @@
                                     <span class="input-group-text bg-light border-end-0">
                                         <i class="fas fa-envelope text-muted"></i>
                                     </span>
-                                    <input name="loginname" type="name" class="form-control border-start-0" id="name" placeholder="Tu Nombre de Usuario">
+                                    <input name="Nombre" type="name" class="form-control border-start-0 @error('name') is-invalid @enderror" id="Nombre" placeholder="Tu Nombre de Usuario">
+                                     
                                 </div>
                             </div>
                             
@@ -62,7 +63,8 @@
                                     <span class="input-group-text bg-light border-end-0">
                                         <i class="fas fa-lock text-muted"></i>
                                     </span>
-                                    <input name="loginpassword" type="password" class="form-control border-start-0" placeholder="Ingresa tu contraseña">
+                                    <input id="Contraseña" name="Contraseña" type="password" class="form-control border-start-0 @error('password') is-invalid @enderror" placeholder="Ingresa tu contraseña">
+                                    
                                 </div>
                             </div>
                             
