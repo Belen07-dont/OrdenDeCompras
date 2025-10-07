@@ -6,7 +6,6 @@
     <title>Agregar Producto - C.Store</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- In your main layout file -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,14 +43,12 @@
         </div>
     </nav>
     @auth
-        @if(auth()->id() === 1) {{-- Replace 8 with your specific user ID --}}
+        @if(auth()->id() === 1) 
             <div class="form-container"  style="margin-top: 2rem">
         <div class="form-header">
             <h2><i class="fas fa-plus-circle me-2"></i>Agregar Nuevo Producto</h2>
             <p>Completa la información del producto que deseas agregar al catálogo</p>
         </div>
-        
-        <!-- Cuerpo de agregar producot-->
         <div class="form-body">
             <form action="/create-product" method="POST">
                 @csrf
@@ -71,7 +68,6 @@
                         </div>
                     </div>
                     
-                    <!-- Product Description -->
                     <div class="mb-4">
                         <label for="description" class="form-label">Descripción</label>
                         <div class="input-group">
@@ -98,8 +94,6 @@
                             </select>
                         </div>
                     </div>
-
-                    <!-- Product Image -->
                     <div class="mb-4">
                         <label for="image" class="form-label">Imagen del Producto</label>
                         <div class="input-group">
@@ -111,8 +105,6 @@
                         <div class="form-text">Opcional - Puedes pegar la URL de una imagen del producto</div>
                     </div>
                 </div>
-                
-                <!-- Precio -->
                 <div class="form-section">
                     <h4 class="section-title">Precio</h4>
                     
@@ -127,8 +119,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Submit Button -->
                 <button type="submit" class="btn-submit">
                     <i class="fas fa-save me-2"></i>Guardar Producto
                 </button>
@@ -147,7 +137,6 @@
                 @foreach($productsByCategory as $category => $products)
                 <div class="category-section">
                     <h2 style="color: white;" class="category-title">{{ $category ?: 'Sin Categoría' }}</h2>
-                    <!--style="overflow:auto; white-space: nowrap;" en el div de justo abajo por si quiere el scroll-->
 
                     <div class="products-grid" style="">
 
@@ -256,32 +245,37 @@
 
                         <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="addToCartModalLabel">Añadir al carrito</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="modal-content" style="border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);">
+                                    <div class="modal-header" style="background: linear-gradient(135deg, var(--dark-color), #3a3f5c); color: white; border-bottom: none; padding: 20px;">
+                                        <h5 class="modal-title" id="addToCartModalLabel" style="font-weight: 700; font-size: 1.3rem;">
+                                            <i class="fas fa-cart-plus me-2"></i>Añadir al carrito
+                                        </h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="text-center">
-                                            <img id="modalProductImage" src="" alt="" class="img-fluid mb-3" style="max-height: 150px;">
-                                            <h4 id="modalProductName"></h4>
-                                            <p class="price" id="modalProductPrice"></p>
+                                    <div class="modal-body" style="padding: 30px;">
+                                        <div class="text-center mb-4">
+                                            <img id="modalProductImage" src="" alt="" class="img-fluid mb-3" style="max-height: 150px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+                                            <h4 id="modalProductName" style="color: var(--dark-color); font-weight: 700; margin-bottom: 10px;"></h4>
+                                            <p class="price" id="modalProductPrice" style="font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin: 0;"></p>
                                         </div>
                                         <form action="{{route('cart')}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="product_id" id="modalProductId">
-                                            <div class="mb-3">
-                                                <label for="quantity" class="form-label">Cantidad:</label>
-                                                <input type="number" name="quantity" class="form-control" value="1" min="1">
+                                            <div class="mb-4">
+                                                <label for="quantity" class="form-label" style="color: var(--dark-color); font-weight: 600; margin-bottom: 10px;">Cantidad:</label>
+                                                <div class="input-group" style="border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);">
+                                                    <input type="number" name="quantity" class="form-control" value="1" min="1" style="border: none; padding: 15px; font-size: 1rem; text-align: center; font-weight: 600;">
+                                                </div>
                                             </div>
-                                            <button type="" class="btn btn-success w-100">
-                                                <i class="fas fa-cart-plus"></i> Añadir al carrito
+                                            <button type="submit" class="btn btn-submit" style="margin-top: 0;">
+                                                <i class="fas fa-cart-plus me-2"></i>Añadir al carrito
                                             </button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+</div>
+</div>
                     </div>
                 </div>
                 @endforeach
@@ -294,12 +288,9 @@
             @endif
         </div>
     </div>
-    
-       
     @endauth
-    
     <div class="container" style="width: 120%">
-    
+    <br><br><br>
     </div> 
     <footer class="footer">
         <div class="container">
@@ -333,10 +324,7 @@
             <p class="text-center mb-0">© 2023 C. Store. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <!-- JavaScript for form enhancements -->
     <script>
-    // Populate modal with product data
     document.getElementById('addToCartModal').addEventListener('show.bs.modal', function (event) {
         const button = event.relatedTarget;
         
@@ -346,7 +334,6 @@
         document.getElementById('modalProductImage').src = button.getAttribute('data-product-image');
     });    
     document.addEventListener('DOMContentLoaded', function() {
-        // Add input animations
         const inputs = document.querySelectorAll('.form-control');
         inputs.forEach(input => {
             input.addEventListener('focus', function() {

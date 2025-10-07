@@ -12,7 +12,6 @@
 </head>
 <body>
     
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -53,17 +52,17 @@
     </nav>
 
     <!-- Profile Hero Section -->
-    <div class="profile-hero">
+    <div class="profile-hero" style="padding-top: 8rem">
         <div class="container">
             @auth
                 @if(auth()->user()->image=="")
-                    <div class="profile-avatar ">
-                        <img src="{{asset('img/login.jpg')}}" alt="" class="product-image rounded-circle" style="width:100px; height:100px">
+                    <div class="profile-avatar" style="height: 300px; width:300px; position:absolute">
+                        <img src="{{asset('img/login.jpg')}}" alt="" class="product-image rounded-circle" style="width:300px; height:300px">
                     </div>
                     <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
                     <p class="lead">Miembro de C.Store desde {{ auth()->user()->created_at->format('F Y') }}</p>
-                @else
-                    <div class="profile-avatar " style="height: 300px; width:300px; position:absolute">
+                @else   
+                    <div class="profile-avatar" style="height: 300px; width:300px; position:absolute">
                         <img src="{{ asset('img/pfps/' . auth()->user()->image) }}" alt="" class="product-image rounded-circle" style="width:300px; height:300px">
                     </div>
                     <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
@@ -87,81 +86,73 @@
     <!-- Profile Content -->
     <div class="container">
         @auth
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="row">
-            <!-- Left Column - User Info -->
-            <div class="col-lg-9 d-flex">
-                <!-- Personal Information Card -->
-                <div class="profile-card col-6">
-                    <div class="profile-card-header">
-                        <i class="fas fa-user-circle me-2"></i>Información Personal
-                    </div>
-                    <div class="card-body p-0">
-                        <div class="profile-info-item" >
-                            <span class="info-label col-4">Nombre:    </span>
-                            <span class="info-value col-6">{{ auth()->user()->name }}</span>
-                        </div>
-                        <div class="profile-info-item">
-                            <span class="info-label col-4">Email:</span>
-                            <span class="info-value col-6">{{ auth()->user()->email }}</span>
-                        </div>
-                        <div class="profile-info-item">
-                            <span class="info-label col-4">Miembro desde:</span>
-                            <span class="info-value col-6">{{ auth()->user()->created_at->format('d/m/Y') }}</span>
-                        </div>
-                        <div class="profile-info-item">
-                            <span class="info-label col-4">Última actualización:</span>
-                            <span class="info-value col-6">{{ auth()->user()->updated_at->format('d/m/Y') }}</span>
-                        </div>
-                    </div>
+        <br><br><br><br><br>
+         <div class="container">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="profile-card">
+                <div class="profile-card-header">
+                    <i class="fas fa-user-circle me-2"></i>Información Personal
                 </div>
-
-                <!-- Recent Activity -->
-                <div class="profile-card col-6 my-0 mx-3 mt-0" style="margin-top:0">
-                    <div class="profile-card-header my-0">
-                        <i class="fas fa-history me-2"></i>Actividad Reciente
+                <div class="card-body py-2" style="text-align: start; font-size: large">
+                    <div class="profile-info-item">
+                        <span class="info-label" >Nombre:</span>
+                        <span class="info-value">{{ auth()->user()->name }}</span>
                     </div>
-                    <div class="card-body">
-                        <ul class="recent-activity">
-                            <li class="activity-item">
-                                <div class="fw-semibold">Sesión iniciada</div>
-                                <div class="activity-time">Hoy a las {{ now()->format('H:i') }}</div>
-                            </li>
-                            <li class="activity-item">
-                                <div class="fw-semibold">Perfil visitado</div>
-                                <div class="activity-time">Última vez: {{ now()->subDays(2)->format('d/m/Y') }}</div>
-                            </li>
-                            <li class="activity-item">
-                                <div class="fw-semibold">Configuración actualizada</div>
-                                <div class="activity-time">Hace 1 semana</div>
-                            </li>
-                        </ul>
+                    <div class="profile-info-item">
+                        <span class="info-label" >Email:</span>
+                        <span class="info-value">{{ auth()->user()->email }}</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="info-label" >Miembro desde:</span>
+                        <span class="info-value">{{ auth()->user()->created_at->format('d/m/Y') }}</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="info-label" >Última actualización:</span>
+                        <span class="info-value">{{ auth()->user()->updated_at->format('d/m/Y') }}</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Right Column - Stats & Actions -->
-            <div class="col-lg-3">
-                <!-- Quick Stats -->
-                <div class="stats-card mb-4">
-                    <div class="stats-number">0</div>
-                    <div class="stats-label">Pedidos Realizados</div>
+        <!-- Recent Activity -->
+        <div class="col-lg-4">
+            <div class="profile-card">
+                <div class="profile-card-header">
+                    <i class="fas fa-history me-2"></i>Actividad Reciente
                 </div>
-                
-                <div class="stats-card mb-4">
-                    <div class="stats-number">0</div>
-                    <div class="stats-label">Productos en carrito</div>
+                <div class="card-body p-0">
+                    <ul class="recent-activity">
+                        <li class="activity-item">
+                            <div class="fw-semibold">Sesión iniciada</div>
+                            <div class="activity-time">Hoy a las {{ now()->format('H:i') }}</div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="fw-semibold">Perfil visitado</div>
+                            <div class="activity-time">Última vez: {{ now()->subDays(0)->format('d/m/Y') }}</div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="fw-semibold">Configuración actualizada</div>
+                            <div class="activity-time">Hace 1 semana</div>
+                        </li>
+                    </ul>
                 </div>
-                
-                <br><br><br>
-                <!-- Quick Actions -->
-                <div class="profile-card sticky-top">
-                    <div class="profile-card-header">
-                        <i class="fas fa-bolt me-2"></i>Acciones Rápidas
-                    </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="stats-card mb-3" style="padding-top: 2rem; ">
+                <div class="stats-number">0</div>
+                <div class="stats-label">Pedidos Realizados</div>
+            </div>
+            <div class="stats-card mb-3" style="padding-top: 2rem; ">
+                <div class="stats-number">0</div>
+                <div class="stats-label">Productos en carrito</div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-card-header">
+                    <i class="fas fa-bolt me-2"></i>Acciones Rápidas
+                </div>
                     <div class="card-body">
                         <div class="d-grid gap-2 bg-dark-subtle">
                             <button class="btn btn-edit my-1" data-bs-toggle="modal" data-bs-target="#editarPerfil">
@@ -223,6 +214,8 @@
     </div>
 
     <!-- Pie de Página -->
+    </div> 
+
     <footer class="footer">
         <div class="container">
             <div class="row ">
@@ -255,8 +248,6 @@
             <p class="text-center mb-0">© 2023 C. Store. Todos los derechos reservados.</p>
         </div>
     </footer>
-    </div> 
-    
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

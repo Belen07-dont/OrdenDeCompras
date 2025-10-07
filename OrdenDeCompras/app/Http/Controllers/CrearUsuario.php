@@ -26,7 +26,7 @@ class CrearUsuario extends Controller
          $request->session()->regenerate();
       }else{
          
-         return("boo");
+          return back()->with('error', 'Usuario o contraseña incorrectos');
       }
       return redirect('/');
    }
@@ -72,7 +72,7 @@ class CrearUsuario extends Controller
          $username   = auth()->user()->name;
          $useremail  = auth()->user()->email;
          $userimage  = auth()->user()->image;
-       return redirect('/');
+       return redirect('/perfil');
    }
 
 
