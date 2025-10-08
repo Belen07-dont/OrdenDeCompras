@@ -143,7 +143,6 @@ body {
 
 /* === CARDS & CONTAINERS === */
 .form-container {
-    background: white;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -237,6 +236,7 @@ body {
 
 .form-body {
     padding: 40px;
+    border-radius: 0px 0px 20px 20px;
 }
 
 .form-label {
@@ -546,7 +546,7 @@ textarea.form-control {
 }
 
 .activity-item {
-    padding: 15px;
+    padding: 12px;
     border-left: 3px solid var(--secondary-color);
     background: white;
     margin-bottom: 10px;
@@ -777,6 +777,7 @@ textarea.form-control {
 
 .product-card img {
     width: 100%;
+    margin: 10px;
     height: 200px;
     object-fit: cover;
     transition: transform 0.3s ease;
@@ -791,10 +792,12 @@ textarea.form-control {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    background-color: #c9c9c9;
+    
 }
 
 .product-name {
-    color: var(--dark-color);
+    color: black;
     font-weight: 700;
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
@@ -802,8 +805,9 @@ textarea.form-control {
 }
 
 .product-description {
-    color: #666;
+    color: #414141;
     font-size: 0.9rem;
+    font-weight: bold;
     line-height: 1.4;
     margin-bottom: 1rem;
     flex-grow: 1;
@@ -1029,3 +1033,190 @@ textarea.form-control {
     box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2) !important;
     transform: translateY(-2px) !important;
 }
+
+
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #2EC4B6;
+            --accent-color: #FF9F1C;
+            --dark-color: #2D3047;
+            --light-color: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1000px;
+        }
+        
+        .header-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border: none;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .pedido-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border: none;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .pedido-header {
+            background: linear-gradient(135deg, var(--dark-color), #3a3f5c);
+            color: white;
+            padding: 20px;
+        }
+        
+        .pedido-body {
+            padding: 30px;
+        }
+        
+        .item-card {
+            background: var(--light-color);
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .producto-info {
+            width: 100%;
+        }
+        
+        .producto-nombre {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+        
+        .producto-detalles {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .producto-precio {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .total-section {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #6c757d;
+        }
+        
+        .empty-state i {
+            font-size: 5em;
+            margin-bottom: 25px;
+            opacity: 0.5;
+            color: var(--dark-color);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .info-item {
+            background: var(--light-color);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .info-label {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .info-value {
+            font-weight: 700;
+            color: var(--dark-color);
+            font-size: 1.1em;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            margin-top: 10px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: 600;
+            padding: 12px 25px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .total-row {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            border-top: 2px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }

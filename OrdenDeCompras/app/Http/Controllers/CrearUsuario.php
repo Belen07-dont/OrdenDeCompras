@@ -31,14 +31,10 @@ class CrearUsuario extends Controller
       return redirect('/');
    }
 
-
-
    public function logout(){
       Auth::logout();
       return redirect('/');
    }
-
-
 
    public function guardar(Request $request): string{
     $usuario = $request->validate(rules: [
@@ -57,7 +53,7 @@ class CrearUsuario extends Controller
 
      
    public function edituser(CrearUsuario $actualizacion, Request $request){
-         $userid     = auth()->user()->id;
+         $userid     = Auth::user()->id;
          
 
          $usernewname   = $request->input('name');
@@ -69,9 +65,9 @@ class CrearUsuario extends Controller
             'email'=> $usernewemail,
             'image'=> $usernewimage
          ]);
-         $username   = auth()->user()->name;
-         $useremail  = auth()->user()->email;
-         $userimage  = auth()->user()->image;
+         $username   = Auth::user()->name;
+         $useremail  = Auth::user()->email;
+         $userimage  = Auth::user()->image;
        return redirect('/perfil');
    }
 

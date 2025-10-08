@@ -52,30 +52,34 @@
     </nav>
 
     <!-- Profile Hero Section -->
-    <div class="profile-hero" style="padding-top: 8rem">
+    <div class="profile-hero" style="padding-top: 8rem; margin-bottom: 0px;">
         <div class="container">
             @auth
                 @if(auth()->user()->image=="")
                     <div class="profile-avatar" style="height: 300px; width:300px; position:absolute">
                         <img src="{{asset('img/login.jpg')}}" alt="" class="product-image rounded-circle" style="width:300px; height:300px">
                     </div>
+                    <div style="">
                     <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
                     <p class="lead">Miembro de C.Store desde {{ auth()->user()->created_at->format('F Y') }}</p>
+                    </div>
                 @else   
                     <div class="profile-avatar" style="height: 300px; width:300px; position:absolute">
                         <img src="{{ asset('img/pfps/' . auth()->user()->image) }}" alt="" class="product-image rounded-circle" style="width:300px; height:300px">
                     </div>
+                    <div style="">
                     <h1 class="display-5 fw-bold">Perfil de {{ auth()->user()->name}}</h1>
                     <p class="lead">Miembro de C.Store desde {{ auth()->user()->created_at->format('F Y') }}</p>
+                    </div>
                 @endif
                 @else
                 <div class="header-card">
                     <div class="empty-state text-light">
                         <i class="fas fa-exclamation-circle " style="width:100px;"></i>
-                        <h3 class="h4 mb-3">Acceso no autorizado</h3>
+                        <h3 class="h4 mb-3" style="color: rgb(56, 56, 56)">Acceso no autorizado</h3>
                         <h5 class="text-muted mb-4 text-dark">Debes iniciar sesión para ver tu perfil.</h5>
-                        <a href="{{ url('/login') }}" class="btn btn-primary">
-                            <i class="fas fa-user m-2" style="font-size: 2.5rem"></i><h6>Ir a crear una cuenta</h6>
+                        <a href="{{ url('/login') }}" class="">
+                        <h6>¿Iniciar Sesion?</h6>
                         </a>
                     </div>
                 </div>
@@ -84,17 +88,16 @@
     </div>
 
     <!-- Profile Content -->
-    <div class="container">
+    <div class="container-md">
         @auth
-        <br><br><br><br><br>
-         <div class="container">
+        <br><br><br><br><br><br>
     <div class="row">
         <div class="col-lg-5">
             <div class="profile-card">
                 <div class="profile-card-header">
                     <i class="fas fa-user-circle me-2"></i>Información Personal
                 </div>
-                <div class="card-body py-2" style="text-align: start; font-size: large">
+                <div class="card-body py-2" style="text-align: start; font-size: small">
                     <div class="profile-info-item">
                         <span class="info-label" >Nombre:</span>
                         <span class="info-value">{{ auth()->user()->name }}</span>

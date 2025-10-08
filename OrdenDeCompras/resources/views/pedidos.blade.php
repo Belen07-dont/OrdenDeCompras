@@ -196,7 +196,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: lightgray">
      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -376,8 +376,8 @@
                     <i class="fas fa-exclamation-circle"></i>
                     <h3 class="h4 mb-3">Acceso no autorizado</h3>
                     <p class="text-muted mb-4">Debes iniciar sesión para ver tu historial de pedidos.</p>
-                    <a href="{{ url('/login') }}" class="btn btn-primary">
-                        <i class="fas fa-user m-2" style="font-size: 2.5rem"></i><h6>Ir a crear una cuenta</h6>
+                    <a href="{{ url('/login') }}" class="">
+                        <h6>¿Iniciar Sesion?</h6>
                     </a>
                 </div>
             </div>

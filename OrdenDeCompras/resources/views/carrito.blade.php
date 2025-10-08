@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
 </head>
-<body>
+<body style="background-color: lightgray">
     
    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -41,10 +41,9 @@
             </div>
         </div>
 </nav>
-     @php 
-
-        use App\Models\Cart;
-       $cartItems = Cart::where('user_id', Auth::id())->get(); 
+    @php 
+    use App\Models\Cart;
+    $cartItems = Cart::where('user_id', Auth::id())->get(); 
     @endphp
     <div class="container my-5">
     <div class="row">
@@ -126,13 +125,13 @@
                             
                             @endforeach
                             @else
-                                <td colspan="8" class="text-center py-4">
+                                <td colspan="8" class="text-center py-4" style="align-content: center">
                                     <div class="empty-state">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <h4>Parece que estas no ingresado a tu cuenta</h4>
+                                        <i class="fas fa-exclamation-circle fa-5x" style="margin-bottom: 2rem;"></i>
+                                        <h4 style="margin-bottom: 0px;">Parece que estas no ingresado a tu cuenta</h4>
                                         <p class="text-muted">Inicia sesion o crea una nueva cuenta para acceder al carrito</p>
-                                        <a href="{{ url('/login') }}" class="btn btn-primary">
-                                            <i class="fas fa-user m-2" style="font-size: 2.5rem"></i><h6>Ir a crear una cuenta</h6>
+                                        <a href="{{ url('/login') }}" class="">
+                                            <h6>¿Iniciar Sesion?</h6>
                                         </a>
                                     </div>
                                 </td>

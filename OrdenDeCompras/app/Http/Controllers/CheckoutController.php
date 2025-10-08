@@ -24,7 +24,7 @@ class CheckoutController extends Controller
                         ->where('user_id', $userId)
                         ->get();
 
-        // Calculate totals
+        // Calcular totales
         $subtotal = $cartItems->sum('subtotal');
         $envio = $this->calculateShipping($subtotal);
         $impuesto = $this->calculateTax($subtotal);
@@ -39,9 +39,7 @@ class CheckoutController extends Controller
         ]);
     }
 
-    /**
-     * Process the checkout and create order
-     */
+    
     public function processCheckout(Request $request)
 {
     try {
@@ -57,13 +55,13 @@ class CheckoutController extends Controller
 
         Log::info("=== CHECKOUT START ===");
 
-        // Calculate totals
+        // Calcular totales
         $subtotal = $cartItems->sum('subtotal');
         $envio = $this->calculateShipping($subtotal);
         $impuesto = $this->calculateTax($subtotal);
         $total = $subtotal + $envio + $impuesto;
 
-        // Create the main pedido (NO cart_id needed)
+        // Crear pedido
         $pedido = Pedido::create([
             'user_id' => $userId,
             'SubTotal' => $subtotal,
@@ -74,7 +72,7 @@ class CheckoutController extends Controller
 
         Log::info("Pedido created with ID: " . $pedido->id);
 
-        // Create pedido items for each cart item
+        // Crear pedidos de items individuales
         foreach ($cartItems as $cartItem) {
             PedidoItem::create([
                 'pedido_id' => $pedido->id,
@@ -89,11 +87,11 @@ class CheckoutController extends Controller
             Log::info("PedidoItem created for product: " . $cartItem->product_id);
         }
 
-        // Clear the cart
+        // limpiar el carrito
         $deletedCount = Cart::where('user_id', $userId)->delete();
         Log::info("Deleted $deletedCount cart items");
 
-        // Final verification
+        //Verificacion final
         $finalPedidoCount = Pedido::count();
         $finalPedidoItemsCount = PedidoItem::where('pedido_id', $pedido->id)->count();
         
@@ -115,11 +113,9 @@ class CheckoutController extends Controller
     {
         return $subtotal * 0.02;
     }
-
     
     private function calculateTax($subtotal)
-    {
-        
+    { 
         return $subtotal * 0.15;
     }
 

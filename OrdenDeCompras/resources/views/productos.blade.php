@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
 </head>
-<body>
-    
+<body style="background-color: lightgray">
+<div>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -44,7 +44,7 @@
     </nav>
     @auth
         @if(auth()->id() === 1) 
-            <div class="form-container"  style="margin-top: 2rem">
+    <div class="form-container"  style="margin-top: 2rem; background-color: white; margin-bottom: 2rem; width: 70%;">
         <div class="form-header">
             <h2><i class="fas fa-plus-circle me-2"></i>Agregar Nuevo Producto</h2>
             <p>Completa la información del producto que deseas agregar al catálogo</p>
@@ -64,7 +64,7 @@
                             <span class="input-group-text">
                                 <i class="fas fa-tag"></i>
                             </span>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Ej: Snacks Variados, Refrescos, etc." required>
+                            <input style="background-color: rgb(252, 252, 252)" name="name" type="text" class="form-control" id="name" placeholder="Ej: Snacks Variados, Refrescos, etc." required>
                         </div>
                     </div>
                     
@@ -74,7 +74,7 @@
                             <span class="input-group-text">
                                 <i class="fas fa-align-left"></i>
                             </span>
-                            <textarea name="description" class="form-control" id="description" rows="3" placeholder="Describe el producto en detalle..." required></textarea>
+                            <textarea style="background-color: rgb(252, 252, 252)" name="description" class="form-control" id="description" rows="3" placeholder="Describe el producto en detalle..." required></textarea>
                         </div>
                     </div>
                     
@@ -115,7 +115,7 @@
                             <span class="input-group-text">
                                 <i class="fas fa-dollar-sign"></i>
                             </span>
-                            <input name="price" type="number" class="form-control" id="price" step="0.01" min="0" placeholder="0.00" required>
+                            <input style="background-color: rgb(238, 238, 238)" name="price" type="number" class="form-control" id="price" step="0.01" min="0" placeholder="0.00" required>
                         </div>
                     </div>
                 </div>
@@ -217,12 +217,15 @@
                 @foreach($productsByCategory as $category => $products)
                 <div class="category-section">
                     <h2 style="color: white;" class="category-title">{{ $category ?: 'Sin Categoría' }}</h2>
-                    <div class="products-grid">
+
+                    <div class="products-grid" style="">
+
+                        <!-- Cada producto individual -->
                         @foreach($products as $product)
                             <div class="product-card">
                                 <div class="product-image-container">
-                                    <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
-                                    <span class="category-badge">{{ $category }}</span>
+                                    <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->name }}" class="product-image" id="">
+                                    <span class="category-badge" id="{{ $category }}">{{ $category }}</span>
                                 </div>
                                 <div class="product-content">
                                     <h3 class="product-name">{{ $product->name }}</h3>
@@ -232,11 +235,11 @@
                                          <button class="btn btn-primary btn-sm add-to-cart-btn"
                                                 data-bs-toggle="modal" 
                                                 data-bs-target="#addToCartModal"
-                                                data-product-id="{{ $product->id }}"
-                                                data-product-name="{{ $product->name }}"
+                                                data-product-id="   {{ $product->id }}"
+                                                data-product-name=" {{ $product->name }}"
                                                 data-product-price="{{ $product->price }}"
                                                 data-product-image="{{ asset('storage/' . $product->image) }}">
-                                            <i class="fas fa-cart-plus"></i>Añadir al carrito
+                                            <i class="fas fa-cart-plus"></i> Añadir al carrito
                                         </button>
                                     </div>
                                 </div>
@@ -245,37 +248,32 @@
 
                         <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content" style="border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);">
-                                    <div class="modal-header" style="background: linear-gradient(135deg, var(--dark-color), #3a3f5c); color: white; border-bottom: none; padding: 20px;">
-                                        <h5 class="modal-title" id="addToCartModalLabel" style="font-weight: 700; font-size: 1.3rem;">
-                                            <i class="fas fa-cart-plus me-2"></i>Añadir al carrito
-                                        </h5>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addToCartModalLabel">Añadir al carrito</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body" style="padding: 30px;">
-                                        <div class="text-center mb-4">
-                                            <img id="modalProductImage" src="" alt="" class="img-fluid mb-3" style="max-height: 150px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
-                                            <h4 id="modalProductName" style="color: var(--dark-color); font-weight: 700; margin-bottom: 10px;"></h4>
-                                            <p class="price" id="modalProductPrice" style="font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin: 0;"></p>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <img id="modalProductImage" src="" alt="" class="img-fluid mb-3" style="max-height: 150px;">
+                                            <h4 id="modalProductName"></h4>
+                                            <p class="price" id="modalProductPrice"></p>
                                         </div>
                                         <form action="{{route('cart')}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="product_id" id="modalProductId">
-                                            <div class="mb-4">
-                                                <label for="quantity" class="form-label" style="color: var(--dark-color); font-weight: 600; margin-bottom: 10px;">Cantidad:</label>
-                                                <div class="input-group" style="border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);">
-                                                    <input type="number" name="quantity" class="form-control" value="1" min="1" style="border: none; padding: 15px; font-size: 1rem; text-align: center; font-weight: 600;">
-                                                </div>
+                                            <div class="mb-3">
+                                                <label for="quantity" class="form-label">Cantidad:</label>
+                                                <input type="number" name="quantity" class="form-control" value="1" min="1">
                                             </div>
-                                            <button type="submit" class="btn btn-submit" style="margin-top: 0;">
-                                                <i class="fas fa-cart-plus me-2"></i>Añadir al carrito
+                                            <button type="" class="btn btn-success w-100">
+                                                <i class="fas fa-cart-plus"></i> Añadir al carrito
                                             </button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-</div>
-</div>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -287,13 +285,13 @@
                 </div>
             @endif
         </div>
-    </div>
     @endauth
-    <div class="container" style="width: 120%">
-    <br><br><br>
-    </div> 
-    <footer class="footer">
-        <div class="container">
+    
+
+    
+</div>
+<footer class="footer">
+        <div class="container" style="width: 100%">
             <div class="row ">
                 <div class="col-md-4 ">
                     <h5>C. Store</h5>
@@ -323,8 +321,11 @@
             <hr class="mt-4 bg-light">
             <p class="text-center mb-0">© 2023 C. Store. Todos los derechos reservados.</p>
         </div>
-    </footer>
-    <script>
+</footer>
+
+
+
+<script>
     document.getElementById('addToCartModal').addEventListener('show.bs.modal', function (event) {
         const button = event.relatedTarget;
         
@@ -345,7 +346,7 @@
             });
         });
     });
-    </script>
+</script>
     
 </body>
 

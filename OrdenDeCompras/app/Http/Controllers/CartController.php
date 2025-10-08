@@ -19,13 +19,13 @@ class CartController extends Controller
     $product = Product::find($request->product_id);
     $userId = Auth::id();
 
-    // Check if product already exists in user's cart
+    // Si el producto ya existe en la tabla de Carrrito
     $existingCartItem = Cart::where('user_id', $userId)
                            ->where('product_id', $request->product_id)
                            ->first();
 
     if ($existingCartItem) {
-        // Update existing cart item
+        // Actualizar producto en la tabla
         $existingCartItem->update([
             'quantity' => $existingCartItem->quantity + $request->quantity,
             'subtotal' => $product->price * ($existingCartItem->quantity + $request->quantity)
@@ -35,8 +35,7 @@ class CartController extends Controller
     } else {
         $cartItem = $existingCartItem;
         $message = 'Cantidad de producto actualizado en el carrito!';
-        // Create new cart item
-        
+        // Crear nuevo
         $cartItem = Cart::create([
             'product_id' => $request->product_id,
             'name' => $product->name,
@@ -49,18 +48,15 @@ class CartController extends Controller
         ]);
         $message = 'Product added to cart!';
     }
-
     return redirect('/productos');
 }
    public function index()
     {
         $cartItems = Cart::where('user_id', Auth::id())->get();
-        
         return view('/carrito', compact('cartItems'));
     }
     public function destroy($id)
     {
-        
         Cart::findOrFail($id)->delete();
         return view('/carrito');
     }

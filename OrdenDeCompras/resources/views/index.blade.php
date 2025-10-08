@@ -221,7 +221,7 @@
     </section>
 
     <!-- Sección de Contacto -->
-    <section class="py-5 " style="background-color: rgba(236, 236, 236, 0.849)">
+     <section class="py-5 " style="background-color: rgba(236, 236, 236, 0.849)">
         <div class="container">
             <h2 class="section-title text-center">Visítanos</h2>
             <div class="row">
@@ -229,9 +229,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Información de la Tienda</h5>
-                            <p class="mb-1">Calle Real Centenario, A la par del Hotel Elvir</p>
-                            <p class="mb-1">Santa Rosa de Cópan</p>
-                            <p class="mb-0">Teléfono: (+504) 3213-4657</p>
+                            <p><i class="fas fa-map-marker-alt me-2"></i> Calle Principal 123, Ciudad, CP 12345</p>
+                            <p><i class="fas fa-phone me-2"></i> (555) 123-4567</p>
+                            <p><i class="fas fa-envelope me-2"></i> c.Store@gmail.com</p>
+                            <div class="mt-4">
                                 <h6>Horario de Atención:</h6>
                                 <p class="mb-1">Lunes-Viernes: 6:00 AM - 11:00 PM</p>
                                 <p class="mb-1">Sábado: 7:00 AM - 11:00 PM</p>
@@ -247,7 +248,7 @@
                             <form>
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
-                                     <input type="text" class="form-control" id="nombre" style="background-color: rgba(236, 236, 236, 0.849)" required>
+                                    <input type="text" class="form-control" id="nombre" style="background-color: rgba(236, 236, 236, 0.849)" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Correo Electrónico</label>
@@ -264,7 +265,7 @@
                 </div>
             </div>
         </div>
-    </section>
+</section>
 
     <!-- Pie de Página -->
     <footer class="footer">
