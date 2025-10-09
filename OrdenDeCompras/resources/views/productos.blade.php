@@ -238,7 +238,7 @@
                                                 data-product-id="   {{ $product->id }}"
                                                 data-product-name=" {{ $product->name }}"
                                                 data-product-price="{{ $product->price }}"
-                                                data-product-image="{{ asset('storage/' . $product->image) }}">
+                                                data-product-image="{{ asset('img/' . $product->image) }}">
                                             <i class="fas fa-cart-plus"></i> Añadir al carrito
                                         </button>
                                     </div>
