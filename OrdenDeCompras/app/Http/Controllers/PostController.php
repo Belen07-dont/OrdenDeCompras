@@ -30,4 +30,6 @@ class PostController extends Controller
         Product::create($productos);
         return redirect('/');
     }
+
+    
 }

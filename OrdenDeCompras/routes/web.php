@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrearUsuario;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 
@@ -12,14 +13,17 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/productos', [ProductController::class, 'index'])->name('productos.index');
-
+//routas para crear e iniciar sesion a un usuario
 Route::post(uri: '/guardar', action: [CrearUsuario::class, 'guardar']);
 Route::post(uri: '/logout', action: [CrearUsuario::class, 'logout']);
 Route::post(uri: '/login', action: [CrearUsuario::class, 'login']);
 
+//crear comentarios y listarlos
+Route::post('/comentario', [CommentController::class, 'store'])->name('comentario.store');
+Route::get('/comentarios', [CommentController::class, 'index'])->name('comentario.index')->middleware('auth');
 
-//lista para productos
+
+//crear productos
 Route::post('/create-product',  [PostController::class, 'createprod']);
 
 //Perfil
@@ -30,6 +34,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+//productos
+Route::get('/productos', [ProductController::class, 'index'])->name('productos.index');
+
+//pedidos
 Route::get('/pedidos', function () {
     return view('pedidos');
 });

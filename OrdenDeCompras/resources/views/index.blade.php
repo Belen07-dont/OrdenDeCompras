@@ -245,21 +245,50 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Envíanos un Mensaje</h5>
-                            <form>
+                            <form method="POST" action="{{ route('comentario.store') }}">
+                            @csrf                               
+                            @auth
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" style="background-color: rgba(236, 236, 236, 0.849)" required>
+                                    <input type="text" class="form-control" id="nombre" name="name" 
+                                        value="{{ auth()->user()->name }}" 
+                                        style="background-color: rgba(236, 236, 236, 0.849)" readonly>
                                 </div>
+                                
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="email" style="background-color: rgba(236, 236, 236, 0.849)" required>
+                                    <input type="email" class="form-control" id="email" name="email" 
+                                        value="{{ auth()->user()->email }}" 
+                                        style="background-color: rgba(236, 236, 236, 0.849)" readonly>
                                 </div>
+                                
                                 <div class="mb-3">
                                     <label for="mensaje" class="form-label">Mensaje</label>
-                                    <textarea class="form-control" id="mensaje" rows="5" style="background-color: rgba(236, 236, 236, 0.849)" required></textarea>
+                                    <textarea class="form-control" id="mensaje" name="message" rows="5" 
+                                            style="background-color: rgba(236, 236, 236, 0.849)" required></textarea>
                                 </div>
+                                
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                
                                 <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                            </form>
+                            @else
+                                <div class="alert alert-warning">
+                                    Debes iniciar sesión para enviar un comentario.
+                                </div>
+                            @endauth
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -301,7 +330,6 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
